@@ -1,0 +1,24 @@
+version: "3"
+services:
+  web:
+    image: kroshilin/picturer-webapp
+    depends_on:
+      - fpm
+    volumes:
+      - images:/var/www/public/media
+  fpm:
+    image: kroshilin/picturer-fpm
+    command: ['php-fpm']
+    depends_on:
+      - db
+    volumes:
+      - images:/var/www/public/media
+  db:
+    image: kroshilin/picturer-db
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+volumes:
+  db-data:
+  images:

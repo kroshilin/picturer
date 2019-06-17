@@ -1,0 +1,52 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    depends_on:
+      - fpm
+    volumes:
+      - ./:/var/www:delegated
+      - images:/var/www/public/media
+  fpm:
+    build:
+      context: .
+      dockerfile: docker/fpm/Dockerfile
+    command: ['php-fpm']
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www:delegated
+      - images:/var/www/public/media
+    environment:
+      - XDEBUG_ENABLED=true
+  db:
+    build:
+      context: .
+      dockerfile: docker/mysql/Dockerfile
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  cron:
+    build:
+      context: .
+      dockerfile: docker/cron/Dockerfile
+    depends_on:
+      - web
+    volumes:
+      - ./:/var/www:delegated
+    command: ["php"]
+  php-worker:
+    depends_on:
+      - web
+    build:
+      context: .
+      dockerfile: docker/worker/Dockerfile
+    volumes:
+      - ./:/var/www:delegated
+volumes:
+  db-data:
+  images:

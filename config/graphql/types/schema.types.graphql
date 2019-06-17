@@ -1,0 +1,65 @@
+type Tag {
+    id: ID!
+    name: String
+}
+
+type Picture {
+    id: ID!
+    contentUrl: String
+    tags: [Tag]!
+}
+
+type PictureEdge {
+    cursor: String!
+    node: Picture!
+}
+
+type TagEdge {
+    cursor: String!
+    node: Tag!
+}
+
+#type PageInfo {
+#    endCursor: String
+#    hasNextPage: Boolean!
+#}
+
+type PicturesResultCursor {
+    edges: [PictureEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type TagsResultCursor {
+    edges: [TagEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+input TagInput {
+    id: String
+    name: String
+}
+
+input PictureInput {
+    id: Int!,
+    contentUrl: String,
+    tags: [TagInput]
+}
+
+type Mutation {
+    updatePicture(input: PictureInput): Picture
+    uploadPictures(files: [Upload!]!): [Picture!]!
+    deletePicture(input: PictureInput!): Int!
+}
+
+type Query {
+    picture(id: ID!): Picture
+    pictures(
+        after: String,
+        first: Int,
+    ): PicturesResultCursor,
+    randomPicture(tag: String): Picture
+}
+
+scalar Upload

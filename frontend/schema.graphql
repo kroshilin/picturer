@@ -1,0 +1,65 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Mutation {
+    updatePicture(input: PictureInput): Picture
+    uploadPictures(files: [Upload!]!): [Picture!]!
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+}
+
+type Picture {
+    contentUrl: String
+    id: ID!
+    tags: [Tag]!
+}
+
+type PictureEdge {
+    cursor: String!
+    node: Picture!
+}
+
+type PicturesResultCursor {
+    edges: [PictureEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type Query {
+    picture(id: ID!): Picture
+    pictures(after: String, first: Int): PicturesResultCursor!
+    randomPicture(tag: String): Picture
+    deletePicture(pic: PictureInput!): Int!
+}
+
+type Tag {
+    id: ID!
+    name: String
+}
+
+input PictureInput {
+    id: Int!
+    tags: [TagInput]
+}
+
+input TagInput {
+    id: String
+    name: String
+}
+
+
+scalar Upload

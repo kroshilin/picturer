@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    networks:
+    - service-tier
+    - default
+    environment:
+      - VIRTUAL_HOST=telepoll.local
+      - VIRTUAL_PORT=80
+  db:
+    networks:
+    - service-tier
+    - default
+networks:
+  service-tier:
+    external:
+      name: service-tier
+  default:

@@ -1,0 +1,15 @@
+{
+  "name": "Telepoll GraphQL Schema",
+  "schemaPath": "frontend/schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://api.telepoll.local/graphql/",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
