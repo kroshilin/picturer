@@ -81,11 +81,26 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "guzzlehttp/psr7": {
+        "version": "1.6.1"
+    },
+    "intervention/image": {
+        "version": "2.5.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "jms/metadata": {
         "version": "2.0.0"
+    },
+    "league/flysystem": {
+        "version": "1.0.53"
+    },
+    "league/glide": {
+        "version": "1.5.0"
+    },
+    "league/glide-symfony": {
+        "version": "1.0.3"
     },
     "nelmio/cors-bundle": {
         "version": "1.5",
@@ -140,11 +155,17 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "1.1.0"
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "symfony/cache": {
         "version": "v4.2.7"

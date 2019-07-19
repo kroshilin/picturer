@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "doctrine/orm": "^2.6",
+        "league/glide-symfony": "^1.0",
         "nelmio/cors-bundle": "^1.5",
         "overblog/graphql-bundle": "^0.11.12",
         "symfony/console": "4.2.*",

@@ -111,15 +111,18 @@ function UploadForm(props: Props) {
                                 inputProps={{multiple: true, accept: "image/*"}}
                                 style={{display: 'none'}}
                             />
-                            <Button
-                                variant="contained"
-                                component="span"
-                                color="secondary">
-                                <CloudUploadIcon
-                                    className={classNames(classes.leftIcon, classes.iconSmall)}
-                                />
-                                Upload
-                            </Button>
+                            <label
+                                htmlFor="raised-button-file">
+                                <Button
+                                    variant="contained"
+                                    component="span"
+                                    color="secondary">
+                                    <CloudUploadIcon
+                                        className={classNames(classes.leftIcon, classes.iconSmall)}
+                                    />
+                                    Upload
+                                </Button>
+                            </label>
                             <Button
                                 onClick={() => { mutate({ variables: { files: filesRead } }).then(() => setFiles([])).catch((e) => {setFiles([]); alert("Could not upload files to server, try smaller file size")}) }}
                                 variant="contained"
